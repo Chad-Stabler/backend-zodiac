@@ -16,6 +16,11 @@ describe('backend-express-template routes', () => {
     });
     expect(res.body).toEqual(expected);
   });
+  it('/zodiacs/:id returns data for a specific zodiac', async () => {
+    const res = await request(app).get('/zodiacs/3');
+    const expected = { id: '3', name: 'cancer', dates: 'Jun 21 - Jul 22', symbol: 'Crab' };
+    expect(res.body).toEqual(expected);
+  });
   afterAll(() => {
     pool.end();
   });
